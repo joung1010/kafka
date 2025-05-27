@@ -1,3 +1,24 @@
 spring:
   application:
     name: kafka.project
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: 1
+      retries: 3
+      # 추가 설정
+      properties:
+        linger.ms: 0
+        batch.size: 16384
+        buffer.memory: 33554432
+    # 커스텀 파티셔너 설정 (필요시)
+    # producer:
+    #   properties:
+    #     partitioner.class: com.example.kafka.CustomPartitioner
+
+logging:
+  level:
+    org.apache.kafka: INFO
+    org.springframework.kafka: DEBUG
