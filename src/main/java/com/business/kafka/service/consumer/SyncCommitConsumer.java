@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @ConditionalOnProperty(
         name = "spring.kafka.consumer.type",
-        value = "sync-commit",
+        havingValue = "sync-commit",
         matchIfMissing = false
 )
 @Component

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @ConditionalOnProperty(
         name = "spring.kafka.consumer.type",
-        value = "simple",
+        havingValue = "simple",
         matchIfMissing = false
 )
 @Component
