@@ -13,12 +13,26 @@ spring:
         linger.ms: 0
         batch.size: 16384
         buffer.memory: 33554432
+    streams:
+      application-id: order-join-application
+      properties:
+        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        commit.interval.ms: 1000
+        cache.max.bytes.buffering: 0  # 즉시 처리
     # 커스텀 파티셔너 설정 (필요시)
     # producer:
     #   properties:
     #     partitioner.class: com.example.kafka.CustomPartitioner
 
+topics:
+  address: address
+  order: order
+  order-join: order_join
+
 logging:
   level:
+    com.business.kafka: DEBUG
     org.apache.kafka: INFO
+    org.apache.kafka.streams: INFO
     org.springframework.kafka: DEBUG
