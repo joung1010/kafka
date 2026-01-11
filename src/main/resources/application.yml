@@ -1,6 +1,6 @@
 spring:
   application:
-    name: kafka.project
+    name: kafka-streams-app
   kafka:
     bootstrap-servers: localhost:9092
     producer:
@@ -13,12 +13,28 @@ spring:
         linger.ms: 0
         batch.size: 16384
         buffer.memory: 33554432
+    streams:
+      application-id: streams-join-application  # 공통 ID
+      properties:
+        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        commit.interval.ms: 1000
+        cache.max.bytes.buffering: 0
     # 커스텀 파티셔너 설정 (필요시)
     # producer:
     #   properties:
     #     partitioner.class: com.example.kafka.CustomPartitioner
 
+topics:
+  address: address
+  address-v2: address_v2
+  order: order
+  order-join: order_join              # KTable 조인 결과
+  order-join-global: order_join_global # GlobalKTable 조인 결과
+
 logging:
   level:
+    com.business.kafka: DEBUG
     org.apache.kafka: INFO
+    org.apache.kafka.streams: INFO
     org.springframework.kafka: DEBUG
