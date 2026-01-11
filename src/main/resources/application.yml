@@ -13,10 +13,22 @@ spring:
         linger.ms: 0
         batch.size: 16384
         buffer.memory: 33554432
+    streams:
+      application-id: streams-filter-application
+      properties:
+        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        commit.interval.ms: 1000
+        cache.max.bytes.buffering: 0
+
     # 커스텀 파티셔너 설정 (필요시)
     # producer:
     #   properties:
     #     partitioner.class: com.example.kafka.CustomPartitioner
+
+topics:
+  stream-log: stream_log
+  stream-log-filter: stram_log_filter
 
 logging:
   level:
