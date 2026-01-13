@@ -15,4 +15,6 @@ public class SendMessage {
     private String to;
     @Setter
     private String content;
+    
+    // Builder 패턴을 사용할 때 content를 설정할 수 있도록 유지
 }

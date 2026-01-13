@@ -1,4 +1,4 @@
-package com.business.kafka.systems.send.message.ipml;
+package com.business.kafka.systems.send.message.impl;
 
 
 import com.business.kafka.systems.send.message.SendMessage;

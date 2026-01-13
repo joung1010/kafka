@@ -1,8 +1,9 @@
 package com.business.kafka.service.email;
 
 import com.business.kafka.controller.email.model.SendEmailCriteria;
+import com.business.kafka.systems.send.converter.MessageConverter;
 import com.business.kafka.systems.send.impl.AbstractEmail;
-import com.business.kafka.systems.send.message.ipml.EmailSendMessage;
+import com.business.kafka.systems.send.message.impl.EmailSendMessage;
 import com.business.kafka.systems.send.mode.SendResultModel;
 import com.business.kafka.systems.send.mode.impl.EmailSendRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -13,37 +14,40 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailService extends AbstractEmail {
 
+    private static final String EMAIL_TOPIC = "email.send";
 
-    public EmailService(KafkaTemplate<String, String> template) {
-        super(template);
+    public EmailService(KafkaTemplate<String, String> kafkaTemplate, MessageConverter messageConverter) {
+        super(kafkaTemplate, messageConverter);
     }
 
     @Override
     public String getTopic() {
-        return "email.send";
+        return EMAIL_TOPIC;
     }
 
     public SendResultModel<Void> sendEmail(final SendEmailCriteria criteria) {
-        return super.send(
-                EmailSendRequest.builder()
-                        .from(criteria.getFrom())
-                        .to(criteria.getTo())
-                        .subject(criteria.getSubject())
-                        .content(criteria.getBody())
-                        .build()
-        );
+        EmailSendRequest request = toEmailSendRequest(criteria);
+        return super.send(request);
     }
-
 
     @Override
     public SendResultModel<EmailSendMessage> process(EmailSendRequest request) {
-        return SendResultModel.success(
-                EmailSendMessage.builder()
-                        .from(request.getFrom())
-                        .to(request.getTo())
-                        .subject(request.getSubject())
-                        .content(request.getContent())
-                        .build()
-        );
+        EmailSendMessage message = EmailSendMessage.builder()
+                .from(request.getFrom())
+                .to(request.getTo())
+                .subject(request.getSubject())
+                .content(request.getContent())
+                .build();
+        
+        return SendResultModel.success(message);
+    }
+
+    private EmailSendRequest toEmailSendRequest(SendEmailCriteria criteria) {
+        return EmailSendRequest.builder()
+                .from(criteria.getFrom())
+                .to(criteria.getTo())
+                .subject(criteria.getSubject())
+                .content(criteria.getBody())
+                .build();
     }
 }

@@ -16,6 +16,4 @@ public class SendRequest {
     private String from;
     private String to;
     private String content;
-
-
 }
