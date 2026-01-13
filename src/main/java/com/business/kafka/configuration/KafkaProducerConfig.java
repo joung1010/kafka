@@ -11,6 +11,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -18,8 +19,8 @@ import java.util.Map;
 public class KafkaProducerConfig {
 
 
-    @Value("${spring.kafka.bootstrap-servers}")
-    private String bootstrapServers;
+    @Value("${spring.kafka.bootstrap-servers:}")
+    private List<String> bootstrapServers;
 
     @Bean
     public ProducerFactory<String, String> producerFactory() {

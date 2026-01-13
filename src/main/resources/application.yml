@@ -3,9 +3,9 @@ spring:
     name: kafka.project
   kafka:
     bootstrap-servers:
-    - 54.180.155.113:9092
-    - 54.180.155.113:29092
-    - 54.180.155.113:39092
+      - 54.180.155.113:9092
+      - 54.180.155.113:29092
+      - 54.180.155.113:39092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
