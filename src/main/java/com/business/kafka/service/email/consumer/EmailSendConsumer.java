@@ -25,6 +25,7 @@ public class EmailSendConsumer {
     @RetryableTopic(
             attempts = "5"
             , backoff = @Backoff(delay = 1000, multiplier = 2) //처음에는 1초 그다음 부터 곱하기 2배만큼 간격을 줌
+            , dltTopicSuffix = ".dlt"
     )
     public void send(String message) {
         log.info("Kafka Message : {}", message);
