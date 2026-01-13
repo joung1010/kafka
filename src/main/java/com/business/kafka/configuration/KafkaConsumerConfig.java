@@ -9,14 +9,16 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @EnableKafka
 @Configuration
 public class KafkaConsumerConfig {
 
-    @Value("${spring.kafka.bootstrap-servers}")
-    private String bootstrapServers;
+    @Value("${spring.kafka.bootstrap-servers:}")
+    private List<String> bootstrapServers;
+
 
 
     @Value("${spring.kafka.consumer.enable-auto-commit}")
