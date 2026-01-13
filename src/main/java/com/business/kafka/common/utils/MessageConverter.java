@@ -1,4 +1,4 @@
-package com.business.kafka.systems.send.converter;
+package com.business.kafka.common.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

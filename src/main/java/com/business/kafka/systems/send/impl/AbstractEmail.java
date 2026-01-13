@@ -2,7 +2,7 @@ package com.business.kafka.systems.send.impl;
 
 import com.business.kafka.common.enums.SendTypeEnums;
 import com.business.kafka.systems.send.Sender;
-import com.business.kafka.systems.send.converter.MessageConverter;
+import com.business.kafka.common.utils.MessageConverter;
 import com.business.kafka.systems.send.message.impl.EmailSendMessage;
 import com.business.kafka.systems.send.mode.SendResultModel;
 import com.business.kafka.systems.send.mode.impl.EmailSendRequest;
