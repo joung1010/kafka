@@ -1,6 +1,6 @@
 package com.business.kafka.service.email;
 
-import com.business.kafka.controller.email.model.SendEmailCriteria;
+import com.business.kafka.service.email.model.SendEmailCriteria;
 import com.business.kafka.systems.send.constant.EmailConstant;
 import com.business.kafka.systems.send.converter.MessageConverter;
 import com.business.kafka.systems.send.impl.AbstractEmail;
