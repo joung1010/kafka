@@ -20,7 +20,7 @@ public class EmailController {
     @PostMapping
     public ResponseEntity<String> send(
             @RequestBody SendEmailCriteria criteria) {
-
+        emailService.sendEmail(criteria);
 
         return ResponseEntity.ok("Send Email Success");
     }
