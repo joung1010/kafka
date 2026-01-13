@@ -27,4 +27,13 @@ public class MessageConverter {
             super(message, cause);
         }
     }
+
+    public <T> T fromJson(String json, Class<T> clsz) {
+        try {
+            return objectMapper.readValue(json, clsz);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("JSON 역직렬화 실패", e);
+        }
+    }
+
 }

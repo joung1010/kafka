@@ -1,6 +1,7 @@
 package com.business.kafka.service.email;
 
 import com.business.kafka.controller.email.model.SendEmailCriteria;
+import com.business.kafka.systems.send.constant.EmailConstant;
 import com.business.kafka.systems.send.converter.MessageConverter;
 import com.business.kafka.systems.send.impl.AbstractEmail;
 import com.business.kafka.systems.send.message.impl.EmailSendMessage;
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailService extends AbstractEmail {
 
-    private static final String EMAIL_TOPIC = "email.send";
 
     public EmailService(KafkaTemplate<String, String> kafkaTemplate, MessageConverter messageConverter) {
         super(kafkaTemplate, messageConverter);
@@ -22,7 +22,7 @@ public class EmailService extends AbstractEmail {
 
     @Override
     public String getTopic() {
-        return EMAIL_TOPIC;
+        return EmailConstant.TOPIC;
     }
 
     public SendResultModel<Void> sendEmail(final SendEmailCriteria criteria) {

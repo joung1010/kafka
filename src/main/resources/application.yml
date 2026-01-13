@@ -18,7 +18,6 @@ spring:
     #   properties:
     #     partitioner.class: com.example.kafka.CustomPartitioner
     consumer:
-      type: simple
       group-id: test-group
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
