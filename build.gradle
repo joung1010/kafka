@@ -23,17 +23,20 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.kafka:spring-kafka'
-
+    // JPA를 사용하는 경우 함께 추가
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // H2 데이터베이스 의존성
+    runtimeOnly 'com.h2database:h2'
     compileOnly "org.projectlombok:lombok"
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
-
 tasks.named('test') {
     useJUnitPlatform()
 }
