@@ -1,8 +1,8 @@
 package com.business.kafka.service.user;
 
 import com.business.kafka.common.entity.UserEntity;
+import com.business.kafka.common.utils.MessageConverter;
 import com.business.kafka.controller.user.model.SignUpRequestDto;
-import com.business.kafka.systems.send.converter.MessageConverter;
 import com.business.kafka.systems.user.constant.UserConst;
 import com.business.kafka.systems.user.message.UserSignUpMessage;
 import com.business.kafka.systems.user.repository.UserRepository;
