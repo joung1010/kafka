@@ -15,8 +15,8 @@ spring:
         buffer.memory: 33554432
     # 커스텀 파티셔너 설정 (필요시)
     # producer:
-    #   properties:
-    #     partitioner.class: com.example.kafka.CustomPartitioner
+        properties:
+          partitioner.class: org.apache.kafka.clients.producer.RoundRobinPartitioner
 
 logging:
   level:
